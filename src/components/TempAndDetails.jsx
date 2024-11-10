@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"; // Import PropTypes
 import { FaThermometerEmpty } from "react-icons/fa";
 import { BiSolidDropletHalf } from "react-icons/bi";
 import { FiWind } from "react-icons/fi";
@@ -65,9 +66,10 @@ const TempandDetails = ({
       value: `${temp_min.toFixed(0)}°`,
     },
   ];
+
   return (
     <div>
-      <div className="flex justify-center items-center py-6  text-xl text-cyan-300">
+      <div className="flex justify-center items-center py-6 text-xl text-cyan-300">
         <p>{details}</p>
       </div>
       <div className="flex flex-row items-center justify-between py-3">
@@ -92,7 +94,6 @@ const TempandDetails = ({
           <div key={id} className="flex flex-row items-center">
             <Icon size={30} />
             <p className="font-light ml-1">
-              {" "}
               {title} : <span className="font-medium ml-1">{value}</span>
             </p>
           </div>
@@ -100,6 +101,23 @@ const TempandDetails = ({
       </div>
     </div>
   );
+};
+
+// Prop validation
+TempandDetails.propTypes = {
+  weather: PropTypes.shape({
+    details: PropTypes.string.isRequired,
+    icon: PropTypes.string.isRequired,
+    temp: PropTypes.number.isRequired,
+    temp_min: PropTypes.number.isRequired,
+    temp_max: PropTypes.number.isRequired,
+    sunrise: PropTypes.string.isRequired,
+    sunset: PropTypes.string.isRequired,
+    speed: PropTypes.number.isRequired,
+    humidity: PropTypes.number.isRequired,
+    feels_like: PropTypes.number.isRequired,
+  }).isRequired,
+  units: PropTypes.string.isRequired, // units must be a string and is required
 };
 
 export default TempandDetails;

@@ -1,6 +1,6 @@
 import Forcast from "./components/Forcast";
 import Inputs from "./components/Inputs";
-import TempandDetails from "./components/TempandDetails";
+import TempandDetails from "./components/TempAndDetails";
 import TimeandLocation from "./components/TimeandLocation";
 import TopButtons from "./components/TopButtons";
 import getFormattedWeatherData from "./Services/Services";
@@ -29,7 +29,7 @@ const App = () => {
   }, [query, units]);
 
   return (
-    <div className=" mx-auto text-white  max-w-screen-lg mt-4 py-5 px-32 bg-gradient-to-br shadow-xl shadow-gray-400 from-cyan-400 to-blue-700">
+    <div className=" text-white py-5 px-32 bg-gradient-to-br shadow-xl shadow-gray-400 from-cyan-400 to-blue-700">
       <TopButtons setQuery={setQuery} />
       <Inputs setQuery={setQuery} setUnits={setUnits} />
       {weather && (
@@ -40,7 +40,12 @@ const App = () => {
           <Forcast title="daily forecast" data={weather.daily} />
         </>
       )}
-      <ToastContainer autoClose={2500} hideProgressBar={true} theme="colored" />
+      <ToastContainer
+        autoClose={2500}
+        hideProgressBar={true}
+        theme="dark"
+        position="bottom-left"
+      />
     </div>
   );
 };

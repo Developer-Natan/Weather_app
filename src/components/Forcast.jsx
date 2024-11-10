@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const Forcast = ({ title, data }) => {
   return (
     <div>
@@ -20,6 +22,18 @@ const Forcast = ({ title, data }) => {
       </div>
     </div>
   );
+};
+
+// Prop validation
+Forcast.propTypes = {
+  title: PropTypes.string.isRequired, // title must be a string and is required
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      titile: PropTypes.string.isRequired, // titile (probably a typo, should be 'title') must be a string
+      icon: PropTypes.string.isRequired, // icon must be a string (URL)
+      temp: PropTypes.number.isRequired, // temp must be a number
+    })
+  ).isRequired, // data must be an array of objects, and each object must match the specified shape
 };
 
 export default Forcast;

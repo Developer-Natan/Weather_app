@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types"; // Import PropTypes
 import { BiSearch, BiCurrentLocation } from "react-icons/bi";
 
 const Inputs = ({ setQuery, setUnits }) => {
@@ -16,7 +17,7 @@ const Inputs = ({ setQuery, setUnits }) => {
   };
   return (
     <div className="flex flex-row justify-center my-6">
-      <div className="flex flex-row w-3/4 items-center justify-center space-x-4">
+      <div className="flex flex-row w-3/4 ml-16 items-center justify-center space-x-4">
         <input
           value={city}
           onChange={(e) => setCity(e.currentTarget.value)}
@@ -52,6 +53,12 @@ const Inputs = ({ setQuery, setUnits }) => {
       </div>
     </div>
   );
+};
+
+// Prop validation
+Inputs.propTypes = {
+  setQuery: PropTypes.func.isRequired, // setQuery must be a function and is required
+  setUnits: PropTypes.func.isRequired, // setUnits must be a function and is required
 };
 
 export default Inputs;
