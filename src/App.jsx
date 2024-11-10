@@ -13,7 +13,7 @@ function capitalizeFirstLetter(val) {
 }
 
 const App = () => {
-  const [query, setQuery] = useState({ q: "tokyo" });
+  const [query, setQuery] = useState({ q: "mombasa" });
   const [units, setUnits] = useState("metric");
   const [weather, setWeather] = useState(null);
   const getWeather = async () => {
