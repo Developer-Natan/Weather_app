@@ -16,28 +16,30 @@ const App = () => {
   const [query, setQuery] = useState({ q: "mombasa" });
   const [units, setUnits] = useState("metric");
   const [weather, setWeather] = useState(null);
+
   const getWeather = async () => {
     const cityName = query.q ? query.q : "current location";
-    toast.info(`fetching weather data for ${capitalizeFirstLetter(cityName)}`);
+    toast.info(`Fetching weather data for ${capitalizeFirstLetter(cityName)}`);
     await getFormattedWeatherData({ ...query, units }).then((data) => {
       toast.success(`Fetched weather data for ${data.name}, ${data.country}`);
       setWeather(data);
     });
   };
+
   useEffect(() => {
     getWeather();
   }, [query, units]);
 
   return (
-    <div className=" text-white py-5 px-32 bg-gradient-to-br shadow-xl shadow-gray-400 from-cyan-400 to-blue-700">
+    <div className="text-white w-full py-5 px-5 md:px-16 lg:px-32 bg-gradient-to-br  from-cyan-400 to-blue-700 min-h-screen">
       <TopButtons setQuery={setQuery} />
       <Inputs setQuery={setQuery} setUnits={setUnits} />
       {weather && (
         <>
           <TimeandLocation weather={weather} />
           <TempandDetails weather={weather} units={units} />
-          <Forcast title="3 hour step forecast" data={weather.hourly} />
-          <Forcast title="daily forecast" data={weather.daily} />
+          <Forcast title="3-hour forecast" data={weather.hourly} />
+          <Forcast title="Daily forecast" data={weather.daily} />
         </>
       )}
       <ToastContainer
