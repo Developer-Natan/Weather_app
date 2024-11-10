@@ -4,12 +4,14 @@ const TimeandLocation = ({
   weather: { formattedLocalTime, name, country },
 }) => {
   return (
-    <div>
-      <div className="flex items-center justify-center my-6">
-        <p className="text-xl font-extralight">{formattedLocalTime}</p>
+    <div className="">
+      <div className="flex items-center justify-center my-4">
+        <p className="text-sm md:text-xl font-extralight">
+          {formattedLocalTime}
+        </p>
       </div>
-      <div className="flex items-center justify-center my-3">
-        <p className="text-3xl font-medium">{`${name}, ${country}`}</p>
+      <div className="flex items-center justify-center my-2">
+        <p className="text-2xl md:text-3xl font-medium">{`${name}, ${country}`}</p>
       </div>
     </div>
   );
